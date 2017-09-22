@@ -11,7 +11,7 @@ set -o pipefail
 [[ -n "${ZSH_VERSION:-}" ]] && set -o SH_WORD_SPLIT && set +o FUNCTION_ARGZERO && set -o NULL_GLOB
 [[ -z "${ZSH_VERSION:-}" ]] && shopt -s nullglob
 
-umask 077 # paranoid umask, we're creating private keys
+umask 027 # (less) paranoid umask, we're creating private keys
 
 VERSION="0.4.0"
 

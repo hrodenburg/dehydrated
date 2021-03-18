@@ -1,12 +1,66 @@
 # Change Log
 This file contains a log of major changes in dehydrated
 
-## [x.x.x] - xxxx-xx-xx
+## [0.7.0] - 2020-12-10
+## Added
+- Support for external account bindings
+- Special support for ZeroSSL
+- Support presets for some CAs instead of requiring URLs
+- Allow requesting preferred chain (`--preferred-chain`)
+- Added method to show CAs current terms of service (`--display-terms`)
+- Allow setting path to domains.txt using cli arguments (`--domains-txt`)
+- Added new cli command `--cleanupdelete` which deletes old files instead of archiving them
+
+## Fixed
+- No more silent failures on broken hook-scripts
+- Better error-handling with KEEP_GOING enabled
+- Check actual order status instead of assuming it's valid
+- Don't include keyAuthorization in challenge validation (RFC compliance)
+
 ## Changed
-- Don't walk certificate chain for ACMEv2 (certificate contains chain by default)
+- Using EC secp384r1 as default certificate type
+- Use JSON.sh to parse JSON
+- Use account URL instead of account ID (RFC compliance)
+- Dehydrated now has a new home: https://github.com/dehydrated-io/dehydrated
+- Added `OCSP_FETCH` and `OCSP_DAYS` to per-certificate configurable options
+- Cleanup now also removes dangling symlinks
+
+## [0.6.5] - 2019-06-26
+## Fixed
+- Fixed broken APIv1 compatibility from last update
+
+## [0.6.4] - 2019-06-25
+## Changed
+- Fetch account ID from Location header instead of account json
+
+## [0.6.3] - 2019-06-25
+## Changed
+- OCSP refresh interval is now configurable
+- Implemented POST-as-GET
+- Call exit_hook on errors (with error-message as first parameter)
 
 ## Added
-- ??
+- Initial support for tls-alpn-01 validation
+- New hook: sync_cert (for syncing certificate files to disk, see example hook description)
+
+## Fixes
+- Fetch account information after registration to avoid missing account id
+
+## [0.6.2] - 2018-04-25
+## Added
+- New deploy_ocsp hook
+- Allow account registration with custom key
+
+## Changed
+- Don't walk certificate chain for ACMEv2 (certificate contains chain by default)
+- Improved documentation on wildcards
+
+## Fixes
+- Added workaround for compatibility with filesystem ACLs
+- Close unwanted external file-descriptors
+- Fixed JSON parsing on force-renewal
+- Fixed cleanup of challenge files/dns-entries on validation errors
+- A few more minor fixes
 
 ## [0.6.1] - 2018-03-13
 ## Changed
